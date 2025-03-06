@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>For My Love</title>
+    <title>Para Meu Amor</title>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600&display=swap');
 
@@ -120,14 +120,6 @@
             transform: scale(1.1) rotate(15deg);
         }
 
-        .playlist iframe {
-    width: 100%;
-    height: auto;
-    max-width: 560px;
-    max-height: 315px;
-}
-
-
         /* Rodapé */
         .footer {
             margin-top: 50px;
@@ -168,11 +160,18 @@
             color: #ff69b4;
         }
 
+        .playlist iframe {
+            width: 100%;
+            height: auto;
+            max-width: 560px;
+            max-height: 315px;
+        }
+
     </style>
 </head>
 <body>
     <div class="container">
-        <h1>FELIZ 3 MÊZES AMOR</h1>
+        <h1>Feliz 3 Meses Amor</h1>
         <p>Você é a melhor coisa que já aconteceu na minha vida. Eu te amo mais do que palavras podem expressar!</p>
         <div class="heart">❤️</div>
         <button class="button" onclick="mostrarMensagem()">Clique Aqui</button>
@@ -208,6 +207,8 @@
         <div class="footer">
             <p>Feito com ❤️ especialmente para você.</p>
         </div>
+
+        <p id="contador" style="font-size: 1.5em; margin-top: 20px;"></p>
     </div>
 
     <script>
@@ -232,13 +233,30 @@
                 "Com você, o impossível se torna possível!",
                 "Cada segundo com você é um presente valioso!",
                 "Eu amo você"
-
             ];
             let randomMessage = novasMensagens[Math.floor(Math.random() * novasMensagens.length)];
             document.getElementById("mensagem1").innerHTML = `<strong>Mensagem 1:</strong> "${randomMessage}"`;
-            document.getElementById("mensagem2").innerHTML = `<strong>Mensagem 2:</strong> "${randomMessage}"`;
-            document.getElementById("mensagem3").innerHTML = `<strong>Mensagem 3:</strong> "${randomMessage}"`;
         }
+
+        // Função para calcular o tempo desde 06/12/2024
+        function contarTempo() {
+            const dataInicio = new Date('2024-12-06'); // Data em que conheceu a namorada
+            const agora = new Date(); // Data e hora atuais
+
+            const diff = agora - dataInicio; // Diferença em milissegundos
+
+            // Calcula os dias, horas, minutos e segundos
+            const dias = Math.floor(diff / (1000 * 60 * 60 * 24));
+            const horas = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutos = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+            const segundos = Math.floor((diff % (1000 * 60)) / 1000);
+
+            // Exibe o contador na página
+            document.getElementById("contador").innerHTML = `Tempo desde que nos conhecemos: ${dias} dias, ${horas} horas, ${minutos} minutos, ${segundos} segundos`;
+        }
+
+        // Atualiza o contador a cada segundo
+        setInterval(contarTempo, 1000);
     </script>
 </body>
 </html>
